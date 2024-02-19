@@ -4,18 +4,20 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
 
-public class ObjectInputStreamSample {
+public class ObjectOutputStreamSample {
 
     public static void main(String[] args) {
-        String location = "C:\\Users\\User\\IdeaProjects\\FileClass\\src\\byteBased\\object";
+        String location = "C:\\Users\\User\\IdeaProjects\\FileClass\\src\\byteBased\\user";
         // this is the output stream used for objectInputStream where there will write to
         try (FileOutputStream fileOutputStream = new FileOutputStream(location);
 
              // thus this is the object stream used for stream source
                 ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream)){
 
+            User user = new User("Tobi", 23);
+
             // this is the writeObject method used which take in an object
-            objectOutputStream.writeObject((new int[]{1,2,3,4,9,10,23,78}));
+            objectOutputStream.writeObject(user);
 
         }catch (IOException exception){
 
